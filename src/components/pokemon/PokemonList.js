@@ -28,7 +28,7 @@ class PokemonList extends Component {
             ))}
           </div>
         ) : (
-          <div>
+          <div class="loading">
             <h1
               style={{
                 display: "flex",

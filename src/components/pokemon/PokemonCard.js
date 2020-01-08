@@ -37,9 +37,18 @@ class PokemonCard extends Component {
   state = {
     name: "",
     imageUrl: "",
+    apiIndex: "",
     pokemonIndex: "",
     imageLoading: true
   };
+
+  getPokemonIndex(apiIndex) {
+    let pokemonIndex = apiIndex;
+
+    while (pokemonIndex.length < 3) pokemonIndex = "" + "0" + pokemonIndex;
+
+    return pokemonIndex;
+  }
 
   getImageUrl(index) {
     return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index}.png`;
@@ -47,20 +56,22 @@ class PokemonCard extends Component {
 
   componentDidMount() {
     const { name, url } = this.props;
-    const pokemonIndex = url.split("/")[6];
-    const imageUrl = this.getImageUrl(pokemonIndex);
+    const apiIndex = url.split("/")[6];
+    const imageUrl = this.getImageUrl(apiIndex);
+    const pokemonIndex = this.getPokemonIndex(apiIndex);
 
     this.setState({
       name,
       imageUrl,
-      pokemonIndex
+      pokemonIndex,
+      apiIndex
     });
   }
 
   render() {
     return (
       <div className="col-md-3 col-sm-6 mb-5">
-        <StyledLink to={`pokemon/${this.state.pokemonIndex}`}>
+        <StyledLink to={`pokemon/${this.state.apiIndex}`}>
           <Card className="card">
             <h5 className="card-header text-capitalize">
               <b>{this.state.pokemonIndex + " "}</b>

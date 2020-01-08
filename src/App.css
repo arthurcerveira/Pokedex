@@ -11,3 +11,9 @@
   margin-top: 1em;
   margin-bottom: 2.5em;
 }
+
+.loading {
+  height: 100%;
+  padding: 10rem;
+  text-align: center;
+}
