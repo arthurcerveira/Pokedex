@@ -28,7 +28,22 @@ class PokemonList extends Component {
             ))}
           </div>
         ) : (
-          <h1>Loading Pokemon</h1>
+          <div>
+            <h1
+              style={{
+                display: "flex",
+                justifyContent: "center"
+              }}
+            >
+              Loading Pokemon
+            </h1>
+            <div
+              className="spinner-border mx-auto"
+              style={{
+                display: "flex"
+              }}
+            ></div>
+          </div>
         )}
       </React.Fragment>
     );
