@@ -168,6 +168,10 @@ class Pokemon extends Component {
   }
 
   getStatBar(stat) {
+    const color =
+      this.state.themeColor != "white" ? this.state.themeColor : "#EF5350";
+    console.log(color);
+
     return (
       <div className="row align-items-center">
         <div className={`col-12 col-md-3 text-capitalize`}>{stat}</div>
@@ -178,7 +182,7 @@ class Pokemon extends Component {
               role="progressbar"
               style={{
                 width: `${this.state.stats[stat]}%`,
-                backgroundColor: `${this.state.themeColor}`
+                backgroundColor: `${color}`
               }}
               aria-valuenow="25"
               aria-valuemin="0"
@@ -313,6 +317,12 @@ class Pokemon extends Component {
                 {this.getPokemonAttribute("abilities")}
               </div>
             </div>
+          </div>
+          <div className="card-footer text-muted text-center">
+            Data from{" "}
+            <a href="https://pokeapi.co/" target="_blank" className="card-link">
+              Pokeapi.co
+            </a>
           </div>
         </div>
       </div>
